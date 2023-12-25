@@ -1,0 +1,14 @@
+{
+  "values": [
+    "minecraft:air",
+	"minecraft:cave_air",
+	"minecraft:tall_grass",
+	"minecraft:water",
+	"minecraft:sugar_cane",
+	"minecraft:snow",
+	"#minecraft:flowers",
+	"minecraft:kelp_plant",
+	"minecraft:torch",
+	"minecraft:water"
+  ]
+}

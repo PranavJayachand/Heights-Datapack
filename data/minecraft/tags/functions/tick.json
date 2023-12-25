@@ -1,0 +1,12 @@
+{
+
+ "values":[
+ "heights:repeat",
+ "spawn:respawn",
+ "utility:highexplo",
+ "utility:flashbang",
+ "utility:molotov",
+ "utility:smoke"
+ ]
+
+}
