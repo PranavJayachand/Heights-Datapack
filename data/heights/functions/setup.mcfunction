@@ -45,12 +45,18 @@ scoreboard objectives add Motion2 dummy
 scoreboard objectives add KOTHTimeO100 dummy
 scoreboard objectives add ArmorStand dummy
 
-#Count variables for each utility
+# Capacity Parameters
 
-scoreboard objectives add FireworkCT dummy
+scoreboard objectives add num_rocket dummy
 scoreboard objectives add SnowballCT dummy
 scoreboard objectives add EggCT dummy
-scoreboard objectives add RegenCT dummy
+scoreboard objectives add num_explo dummy
+scoreboard objectives add num_molly dummy
+scoreboard objectives add num_flash dummy
+scoreboard objectives add num_smoke dummy
+scoreboard objectives add num_abspot dummy
+scoreboard objectives add num_medkit dummy
+scoreboard objectives add num_uber dummy
 
 
 scoreboard players set @a InGame 1
@@ -91,6 +97,10 @@ scoreboard objectives add TH_p_life dummy
 scoreboard objectives add TH_use_snowball minecraft.used:minecraft.snowball
 scoreboard objectives add TH_use_egg minecraft.used:minecraft.egg
 
+# Uber tracker
+scoreboard objectives add drank_honey minecraft.used:minecraft.honey_bottle
+
+# Ghast timer + collision disabler
 scoreboard objectives add GhASt_Age dummy
 team add NoCollisions
 team modify NoCollisions collisionRule never

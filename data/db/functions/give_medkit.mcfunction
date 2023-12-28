@@ -1,0 +1,2 @@
+# Gives user a Medical Kit (regenerates 6 hearts over time)
+give @s potion{CustomPotionColor:16723494,custom_potion_effects:[{id:instant_health,duration:1,show_particles:0b},{id:regeneration,duration:400,show_particles:0b}],display: {Name: "\"§r§fMedical Kit [6§c❤§f]\""}} 1

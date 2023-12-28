@@ -1,2 +1,2 @@
 # Gives user a Painkiller (gives 2 hearts of absorption)
-give @s potion{custom_potion_effects: [{id: "minecraft:absorption", duration: 12000, ShowParticles: false}], CustomPotionColor: 10855845, display: {Name: "\"§r§fPainkiller [2§6❤§f]\""}} 1
+give @s potion{custom_potion_effects: [{id: "minecraft:absorption", duration: 12000, show_particles: 0b}], CustomPotionColor: 10855845, display: {Name: "\"§r§fPainkiller [2§6❤§f]\""}} 1

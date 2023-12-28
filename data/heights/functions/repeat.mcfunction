@@ -56,9 +56,14 @@ scoreboard players set @a[scores={InGame=0,hasDied=1}] hasDied 0
 execute as @a[nbt={Inventory: [{Slot: -106b, id: "minecraft:crossbow"}]}] run effect give @s minecraft:slowness 1 3 true
 execute as @a[nbt={SelectedItem: {id: "minecraft:crossbow"}}] run effect give @s minecraft:slowness 1 3 true
 
-#Runs Reload Function
+## Misc. Proc Checks
+
+# Reloads
 tag @a[nbt={active_effects: [{id: "minecraft:haste"}]}] add Hasty
 execute as @a[tag=Hasty] at @s run function heights:reload
+
+# Overloads
+execute as @a[scores={drank_honey=1..}] run function utility:overload
 
 #Runs tp_after_setspawn Function
 #tag @a[nbt={ActiveEffects:[{Id:26b}]}] add TPAfterSpawn
@@ -84,23 +89,34 @@ clear @a glass_bottle
 kill @e[type=chicken]
 
 ## Inventory Limit Management
-# Current Values: 1 Snowball, 1 Egg, 16 Firework Rockets, 2 Health Pots
+# Current Values: 1 of each grenade, 10 RPBs, 2 Painkillers, 1 Medkit, 1 Overloader
 
-execute as @a at @s store result score @s SnowballCT run clear @s snowball 0
-execute as @a at @s store result score @s EggCT run clear @s egg 0
-execute as @a at @s store result score @s FireworkCT run clear @s firework_rocket 0
-execute as @a at @s store result score @s RegenCT run clear @s potion{custom_potion_effects: [{id:"minecraft:absorption", duration: 12000}]} 0
+execute as @a at @s store result score @s num_explo run clear @s snowball{display: {Name: '{"text":"High Explosive","color":"dark_green"}'}} 0
+execute as @a at @s store result score @s num_molly run clear @s egg{display: {Name: '{"text":"Molotov","color":"dark_purple"}'}} 0
+execute as @a at @s store result score @s num_flash run clear @s egg{display: {Name: '{"text":"Flashbat","color":"#996600"}'}} 0
+execute as @a at @s store result score @s num_smoke run clear @s snowball{display: {Name: '{"text":"GhASt","color":"gray"}'}} 0
+execute as @a at @s store result score @s num_rocket run clear @s firework_rocket 0
+execute as @a at @s store result score @s num_abspot run clear @s potion{display: {Name: "\"§r§fPainkiller [2§6❤§f]\""}} 0
+execute as @a at @s store result score @s num_medkit run clear @s potion{display: {Name: "\"§r§fMedical Kit [6§c❤§f]\""}} 0
+execute as @a at @s store result score @s num_uber run clear @s honey_bottle 0
 
-execute as @a[scores={SnowballCT=2..}] at @s run clear @s snowball 1
-execute as @a[scores={EggCT=2..}] at @s run clear @s egg 1
-execute as @a[scores={FireworkCT=16..}] at @s run clear @s firework_rocket 1
-execute as @a[scores={RegenCT=3..}] at @s run clear @s potion{custom_potion_effects: [{id:"minecraft:absorption", duration: 12000}]} 1
+# The previous syntax of "as @a[score=...] at @s run" seems redundant, as the "at @s" shouldn't do anything more
+# If there are issues with capacity handling, maybe that fix will do things
+execute as @a[scores={num_explo=2..}] run clear @s snowball{display: {Name: '{"text":"High Explosive","color":"dark_green"}'}} 1
+execute as @a[scores={num_molly=2..}] run clear @s egg{display: {Name: '{"text":"Molotov","color":"dark_purple"}'}} 1
+execute as @a[scores={num_flash=2..}] run clear @s egg{display: {Name: '{"text":"Flashbat","color":"#996600"}'}} 1
+execute as @a[scores={num_smoke=2..}] run clear @s snowball{display: {Name: '{"text":"GhASt","color":"gray"}'}} 1
+execute as @a[scores={num_rocket=11..}] run clear @s firework_rocket 1
+execute as @a[scores={num_abspot=3..}] run clear @s potion{display: {Name: "\"§r§fPainkiller [2§6❤§f]\""}} 1
+execute as @a[scores={num_medkit=2..}] run clear @s potion{display: {Name: "\"§r§fMedical Kit [6§c❤§f]\""}} 1
+execute as @a[scores={num_uber=2..}] run clear @s honey_bottle 1
 
 ## Utility Drops
 
 # Tick down 1200 tick (60s) timer
 execute as @e[name="Site Drop", limit=1] at @s unless entity @s[scores={Timing=0}] run scoreboard players remove @s Timing 1
 
+# Drop items at respective spots
 execute as @e[name="Site Drop", limit=1] at @s if entity @s[scores={Timing=1}] run function heights:restock_alt
 execute as @e[name="Site Drop", limit=1] at @s if entity @s[scores={Timing=600}] run function heights:restock
 

@@ -33,9 +33,7 @@ scoreboard objectives remove KOTHTimeO100
 scoreboard objectives remove ArmorStand
 scoreboard objectives remove GhASt_Age
 
-
-
- 
+scoreboard objectives remove drank_honey
 
 # UTILITY
 
@@ -43,11 +41,16 @@ scoreboard objectives remove TH_p_life
 scoreboard objectives remove TH_use_snowball
 scoreboard objectives remove TH_use_egg
 
-scoreboard objectives remove FireworkCT
+scoreboard objectives remove num_rocket
 scoreboard objectives remove SnowballCT
 scoreboard objectives remove EggCT
-scoreboard objectives remove RegenCT
-
+scoreboard objectives remove num_explo
+scoreboard objectives remove num_molly
+scoreboard objectives remove num_flash
+scoreboard objectives remove num_smoke
+scoreboard objectives remove num_abspot
+scoreboard objectives remove num_medkit
+scoreboard objectives remove num_uber
 # UTILITY
 
 kill @e[type=area_effect_cloud]
